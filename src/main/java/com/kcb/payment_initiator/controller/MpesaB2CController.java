@@ -2,7 +2,6 @@ package com.kcb.payment_initiator.controller;
 
 import com.kcb.payment_initiator.dtos.MpesaRequest;
 import com.kcb.payment_initiator.dtos.SingleDataResponse;
-import com.kcb.payment_initiator.dtos.T;
 import com.kcb.payment_initiator.service.MpesaB2CService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -60,8 +59,8 @@ public class MpesaB2CController {
     @GetMapping(value = "/googleCallBackAuth", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     public SingleDataResponse<Object> grantCode(@RequestParam("code") String code, @RequestParam("scope") String scope,
-                                                       @RequestParam("authuser") String authUser, @RequestParam("prompt") String prompt) {
-       String mappedEndpoint = "auth/googleCallBackAuth";
+                                                @RequestParam("authuser") String authUser, @RequestParam("prompt") String prompt) {
+        String mappedEndpoint = "auth/googleCallBackAuth";
         try {
             ThreadContext.put("ENDPOINT", mappedEndpoint);
             ThreadContext.put("METHOD", "GET");
